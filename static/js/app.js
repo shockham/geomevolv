@@ -27,8 +27,10 @@
     scene.add( light );
 
     // lathe
+    var SEGMENTS = 20;
+
     var points = [];
-    var lathe_geom = new THREE.LatheGeometry( points, 40 );
+    var lathe_geom = new THREE.LatheGeometry( points, SEGMENTS );
     lathe_geom.dynamic = true;
 
     var material = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x000000, shininess: 30 } );
@@ -36,6 +38,11 @@
     var lathe = new THREE.Mesh( lathe_geom, material );
     lathe.rotation.x = Math.PI;
     scene.add( lathe );
+    
+    var lathe_rotate = new THREE.Mesh( lathe_geom, material );
+    lathe_rotate.rotation.x = Math.PI;
+    lathe_rotate.position.z -= 100;
+    scene.add( lathe_rotate );
 
     camera.position.z = 100;
 
@@ -47,9 +54,10 @@
             socket.send("emit");
         }
 
-        lathe.geometry = new THREE.LatheGeometry( points, 40 );
+        lathe.geometry = new THREE.LatheGeometry( points, SEGMENTS );
+        lathe_rotate.geometry = new THREE.LatheGeometry( points, SEGMENTS );
 
-        lathe.rotation.x += 0.01;
+        lathe_rotate.rotation.x += 0.01;
 
         renderer.render(scene, camera);
     };

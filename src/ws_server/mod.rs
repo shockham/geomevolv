@@ -71,11 +71,11 @@ fn generate_vector_string() -> String {
     let mut i:f64 = 0.0;
     let time = precise_time_s();
 
-    for _ in 0..10 {
+    for _ in 0..100 {
         let x = ((i * 0.2).sin() * 15.0 + 50.0 * time.cos()) * (time / 2.0).sin();
         let z = ((i - 5.0) * 2.0 * time.tan()) * (time / 10.0).cos(); 
 
-        s = s + &format!( "new THREE.Vector3({},{},{}),", x, time.cos(), z);
+        s = s + &format!( "new THREE.Vector3({},{},{}),", x, 0, z * 5.0);
 
         i += 1.0;
     }
