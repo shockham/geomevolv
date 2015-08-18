@@ -28,7 +28,7 @@
 
     // lathe
     var points = [];
-    var lathe_geom = new THREE.LatheGeometry( points );
+    var lathe_geom = new THREE.LatheGeometry( points, 40 );
     lathe_geom.dynamic = true;
 
     var material = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x000000, shininess: 30 } );
@@ -47,7 +47,7 @@
             socket.send("emit");
         }
 
-        lathe.geometry = new THREE.LatheGeometry( points );
+        lathe.geometry = new THREE.LatheGeometry( points, 40 );
 
         lathe.rotation.x += 0.01;
 
