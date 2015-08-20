@@ -6,7 +6,10 @@ use time::precise_time_s;
 /// start the web socket server
 pub fn start_ws_server() {
     // Start listening for WebSocket connections
-    let ws_server = Server::bind("127.0.0.1:2794").unwrap();
+    let ws_server = match Server::bind("127.0.0.1:2794") {
+        Ok(s) => s,
+        Err(e) => panic!("error: {}", e),
+    };
 
     for connection in ws_server {
         // Spawn a new thread for each connection.
