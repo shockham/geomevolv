@@ -1,6 +1,6 @@
 (function (){
 
-    var socket = new WebSocket("ws://" + location.hostname + ":8010", "rust-websocket");
+    var socket = new WebSocket("ws://" + location.hostname + ":8020", "rust-websocket");
 
     socket.onmessage = function (event) {
         eval(event.data);
