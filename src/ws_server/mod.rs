@@ -7,7 +7,10 @@ use time::precise_time_s;
 pub fn start_ws_server() {
     // Start listening for WebSocket connections
     let ws_server = match Server::bind("127.0.0.1:8010") {
-        Ok(s) => s,
+        Ok(s) => {
+            println!("ws server started on: ws://127.0.0.1:8010");
+            s
+        },
         Err(e) => panic!("error: {}", e),
     };
 
