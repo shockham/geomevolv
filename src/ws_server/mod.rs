@@ -6,7 +6,7 @@ use time::precise_time_s;
 /// start the web socket server
 pub fn start_ws_server() {
     // Start listening for WebSocket connections
-    let ws_server = match Server::bind("0.0.0.0:8010") {
+    let ws_server = match Server::bind("127.0.0.1:8010") {
         Ok(s) => s,
         Err(e) => panic!("error: {}", e),
     };
